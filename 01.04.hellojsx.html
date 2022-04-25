@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello React+JSX</title>
+</head>
+<body>
+  <div id="app"></div>
+  <!-- My app renders here -->
+  <script src="/react/react.js"></script>
+  <script src="/react/react-dom.js"></script>
+  <script src="/react/babel.js"></script>
+  <script type="text/babel"> 
+  
+  //By specifying an invalid type, the browser ignores the code, this gives Babel a chance to parse and transform the JSX syntax itno something the browser can run
+
+  ReactDOM.render(
+    <h1 id="my-heading">
+      <span>Hello <em>JSX</em></span> world!
+      </h1>,
+      document.getElementById('app')
+  );
+
+  //JSX is a separate technology from React and is completely optional
+
+  //The process of TRANSPILATION is a process of taking source code and rewriting it to accomplish the same results but using syntax that's understood by older browsers
+
+  //Transpiling JS is getting more common as programmers want to use the latest ES featers without waiting for browsers to implement them
+  </script>
+</body>
+</html>
