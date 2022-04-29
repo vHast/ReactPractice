@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Props in function components</title>
+</head>
+<body>
+
+  <div id="app">
+
+  </div>
+
+  <script src="/react/react.js"></script>
+  <script src="/react/react-dom.js"></script>
+  <script src="/react/babel.js"></script>
+
+  <script type="text/babel">
+
+    // In function components there's no THIS (Javascript's strict mode), or THIS refers to the global object, so instead of this.props, you get a props object passed to your function as the first argument
+
+    const MyComponent = function(props) {
+      return <span>My name is <em>{props.name}</em></span>;
+    };
+
+    //A common pattern is to use JavaScript's destructuring assignment( JS expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables) and assign the property values to local variables.
+
+    // Example of destructuring assignment
+
+    let a, b, rest;
+
+    [a, b] = [10, 20];
+
+    console.log(a); // expected output: 10
+    console.log(b); // expected output: 20
+
+    [a, b, ...rest] = [10, 20, 30, 40, 50];
+
+    console.log(rest); // expected output: Array [30,40,50];
+
+    const foo = ['one', 'two', 'three'];
+
+    const [red, yellow, green] = foo;
+
+    console.log(red); // one
+    console.log(yellow); // two
+    console.log(green); // three
+
+    // -- Destructuring in React --
+
+    const MyTwoComponent = function({name}) {
+      return <span>My name is <em>{name}</em></span>;
+    }
+
+    // You can have as many properties as you want, if you need (name and job) use it like this
+
+    const MyThreeComponent = function({name, job}) {
+      return <span>My name is <em>{name}</em>, the {job}.</span>;
+    };
+
+    ReactDOM.render(
+      <MyThreeComponent name="Bob" job="engineer" />,
+      document.getElementById('app')
+    );
+
+    </script>
+  
+</body>
+</html>
