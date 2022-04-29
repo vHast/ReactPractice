@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- This is where React is going to render the app -->
+  </div>
+
+  <div id="secondapp">
+
+  </div>
+
+  <div id="secondclassApp">
+
+  </div>
+
+  <script src="/react/react.js"></script>
+  <script src="/react/react-dom.js"></script>
+  <script src="/react/babel.js"></script>
+  <script>
+
+    // Here's an example of a function component
+
+    const myComponent = function() {
+      return 'I am so custom';
+    };
+
+    // The custom component is just a function that returns the UI that you want, in this case, the UI is just a text but here's an example returning a <span> element
+
+    const myComponentSpan = function() {
+      return React.createElement('span', null, 'I am so custom')
+    };
+
+    // Using your component is similar than in previous chapters but you need to CALL the function that defines the component
+
+    ReactDOM.render(
+      myComponentSpan(),
+      document.getElementById('app')
+    );
+  </script>
+  <script type="text/babel">
+
+    // -- JSX Version --
+    // Using JSX will look easier to read, defining the component looks like this
+
+    const MyComponentThree = function () {
+      return <span>I am the JSX version of MyComponent</span>;
+    };
+
+    ReactDOM.render(
+      <MyComponentThree />,
+      document.getElementById('secondapp')
+    );
+
+    // However, in order to do this you'll have to enclose the script with "text/babel" and the name has to start in uppercase since we are talking about JSX version of the component
+  </script>
+
+  <script>
+
+    // -- Second Class Component --
+    // The second way to create a component is to define a class that extends React.component and implements a render() function
+
+    class MyNewComponent extends React.Component {
+      render () {
+        return React.createElement('span', null, 'I am a Second Class Component');
+        // or with JSX:
+        // return <span> I am a Second Class Component</span>
+      }
+    }
+
+    // Rendering
+
+    ReactDOM.render(
+      React.createElement(MyNewComponent),
+      document.getElementById('secondclassApp')
+    );
+
+    // If you use JSX you don't need to know how the component was DEFINED( using a class or a function) In both cases is the same
+    
+    /*
+      -- JSX -- 
+    
+    ReactDOM.render(
+      <MyNewComponent />,
+      document.getElementById('secondclassApp')
+    );
+
+    */
+
+  
+  </script>
+
+</body>
+</html>
