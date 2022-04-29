@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Default properties</title>
+</head>
+<body>
+
+  <div id="app">
+
+  </div>
+
+  <div id="classApp">
+
+  </div>
+
+  <script src="/react/react.js"></script>
+  <script src="/react/react-dom.js"></script>
+  <script src="/react/babel.js"></script>
+
+  <script type="text/babel">
+
+    // Your component may offer a number of properties, but sometimes a few of the properties may have default values taht work well for the most common cases.
+
+    // You can specify DEFAULT PROPERTY values using defaultProps property for both function and class components
+
+
+    /* FUNCTION component */
+
+    const MyComponent = function ({name, job}) {
+      return <span>My name is <em>{name}</em>, the {job}.</span>;
+    };
+
+    // Specifying a DEFAULT PROPERTY
+    
+    MyComponent.defaultProps = {
+      job: 'functional engineer',
+    };
+
+    ReactDOM.render(
+      <MyComponent name ="Bob" />,
+      document.getElementById('app')
+    );
+
+    /* CLASS component */
+
+    class MyClassComponent extends React.Component {
+      render() {
+        return (
+          <span>My name is <em>{this.props.name}</em>,
+            the {this.props.job}</span>
+        );
+      }
+    }
+
+    MyClassComponent.defaultProps = {
+      job: 'class engineer',
+    };
+
+    ReactDOM.render(
+      <MyClassComponent name="Thomas" />,
+      document.getElementById('classApp')
+    );
+
+
+
+  </script>
+  
+</body>
+</html>
